@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>courier information</title>
+   <style>
+        /* Add your CSS styles here */
+        body {
+           font-family: Arial, sans-serif;
+           background-color: whitesmoke;
+           
+           
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 60px;
+          
+        }
+        th, td {
+            border: 3px solid #ff000000;
+            text-align: left;
+            padding: 7px;
+            border-color: black;
+            
+        }
+        th {
+            background-color: whitesmoke;
+        }
+        td {
+            background-color: white;
+        }
+        select.custom-select {
+            width: 100px; 
+            height: 30px; 
+        }
+        textarea {
+        border: 2px solid black; /* Increase border size */
+        padding: 5px; /* Add padding to create space */
+    }
+    select {
+  border-width: 3px; 
+  border-style: solid;
+  border-color: black; 
+  text-align: center;
+  font-weight: bolder;
+  
+}
+
+   
+    @media print {
+  /* Hide the element with the ID "elementToHide" when printing */
+ 
+  #elementToHide {
+    display: none;
+  }
+}
+  </style>
+  
+     
+    
+</head>
+<body>
+    
+    <div style="justify-content: space-between;">
+        <div style="flex: 1;">
+        <br>
+          <br>
+          <br>
+          <br>
+          <form id="form" method="post" autocomplete="off" name="google-sheet">
+          <table>
+            <tr>
+                 <th colspan="2"><img src="images/img2.jpg" width="50%" height="80"/>
+                </th>
+  
+                  <th id="receivedBarcode"; style="background-color:  white;">
+
+                   <select class="custom-select" name="courierType" style="width: 300px;  " >
+                    <option value="ST courier" style="font-weight: bolder;"> ST courier</option> 
+                     <option value="xxx courier"style="font-weight: bolder;" >xxx courier</option> 
+                      <option value="yyy courier"style="font-weight: bolder;">yyy courier</option> 
+                        <option value="xxb courier"style="font-weight: bolder;">xxb courier</option> 
+                          <option value="aaa courier"style="font-weight: bolder;">aaa courier</option>
+                      </select>
+                      </th>
+
+                    <td id="receivedBarcode"; style="background-color:  whitesmoke;">
+                        <svg id="receivedbarcodecontainer" width="80" height="30" ></svg>
+                    </td>
+
+                <tr>
+                    
+                    <td colspan="2">Date of booking:<input type="date" id="date" name="date" required></td>
+                    <td colspan="2">AirwayBill no:<input type="text" id="receivedAirwayBill" name="receiverAirwayBill"> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Reciver Details:</td>
+                    
+                    <td colspan="2">Sender Details</td>
+                    
+                </tr>
+                <tr>
+                  <td colspan="2">Mobile No :<input type="number" id="mobileNO" name="senderMobileNo"></td>
+                  <td colspan="2">Mobile No:<input type="number" id="mobileNOR" name="ReciverMobile"></td>
+                </tr>
+                
+          
+                <tr>
+                  <td colspan="2" >
+                    <div>
+                      Name :
+                    <input type="text" id="number" class="number-input">
+                    </div><br>
+                      
+                    <div>
+                    <textarea id="message" name="message" class="message-text"   rows="4" required></textarea></div>
+                  <br>
+                  <br>
+                  
+                 
+              </td>
+
+              <td colspan="2"><div>
+                Name:
+                <input type="text" id="number" class="number-input"></div><br>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                  <br>
+                  <br>
+                  </tr>
+              <tr>
+
+                <tr>
+                  <td colspan="2">Email:<input type="email" id="senderEmail" name="senderEmail"></td>
+                  <td colspan="2">Email: <input type="email" id="ReciverEmail" name="receivierEmail"></td>
+                </tr>
+                    
+                    <td>No.of.pcs<input type="text" id="noofpice" name="noofpice"></td>
+                    <td>Weight<input type="text" id="weight" name="weight"></td>
+                    <td>Shipment index <input type="text" name="ShipmentIndex"></td>
+                    <td>amount<input type="text" id="amount" name="amount"></td>
+
+                </tr>
+                <tr>
+                    <td colspan="4"  style="text-align: center; background-color:white; "><h3>Any Shipment Anywhere We Are Here</h3></td>
+                </tr>
+            </table>
+
+            <div id="elementToHide">
+               <button type="submit" id="submit" name="submit" style="background-color: whitesmoke; width: 200px; " >Book The Shipment</button>
+          </div>
+
+            </form>
+                <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>        
+        <script src="script.js"></script> 
+        <script src="https://apis.google.com/js/api.js"></script>
+        <script>
+             function displayBarcode() {
+            const airwayBillNo = document.getElementById('receivedAirwayBill').value;
+            JsBarcode("#receivedbarcodecontainer", airwayBillNo, {
+                format: "CODE128",
+                width: 2,
+                height: 60,
+            });
+        }
+        document.getElementById('receivedAirwayBill').addEventListener('input', displayBarcode);
+        </script>
+          <script>
+   
+            const dropdownContent = document.querySelector('.dropdown-content');
+            const selectedImage = document.querySelector('.selected-image');
+        
+            dropdownContent.addEventListener('click', (event) => {
+              if (event.target.tagName === 'IMG') {
+                const selectedImageSrc = event.target.src;
+                selectedImage.src = selectedImageSrc;
+              }
+            });
+          </script>
+      
+</body>
+</html>
