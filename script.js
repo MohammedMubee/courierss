@@ -103,7 +103,7 @@ form.addEventListener("submit", (e) => {
 
 
 
-const dateInput = document.getElementById('dateInput');
+const dateInput = document.getElementById('date');
 
 
 const currentDate = new Date();

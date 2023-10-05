@@ -43,10 +43,32 @@
   border-width: 3px; 
   border-style: solid;
   border-color: black; 
-  text-align: center;
+  text-align: left;
   font-weight: bolder;
+  width: 100px;
+  height: 100px;
   
 }
+.custom-select{
+
+
+margin: 0;
+margin-left: 0;
+margin-right: 0;
+width: 200px;
+height: 40px;
+padding: 0;
+font-size: 30px; /* Set your desired font size here */
+font-weight: bold;
+border: 2px solid #000;
+}
+#dropdown-content{
+  width: 200px;
+  height: 50px;
+
+}
+
+  
 
    
     @media print {
@@ -72,17 +94,20 @@
           <form id="form" method="post" autocomplete="off" name="google-sheet">
           <table>
             <tr>
-                 <th colspan="2"><img src="images/img2.jpg" width="50%" height="80"/>
+                 <th width="30%" colspan="2"><img src="images/img2.jpg" width="50%" height="80"/>
                 </th>
   
-                  <th id="receivedBarcode"; style="background-color:  white;">
+                  <th width="60%" id="dropdown-content"; style="background-color:  white;font-size: 90px; width: ;">
 
-                   <select class="custom-select" name="courierType" style="width: 300px;  " >
-                    <option value="ST courier" style="font-weight: bolder;"> ST courier</option> 
-                     <option value="xxx courier"style="font-weight: bolder;" >xxx courier</option> 
-                      <option value="yyy courier"style="font-weight: bolder;">yyy courier</option> 
-                        <option value="xxb courier"style="font-weight: bolder;">xxb courier</option> 
-                          <option value="aaa courier"style="font-weight: bolder;">aaa courier</option>
+                   <select class="custom-select" id="myDropdown" name="courierType" style="width: 430px; height: 100px; text-align: center; " >
+                    <option value="ST courier" id="st-courier" style="font-weight: bolder; "> ST COURIER</option> 
+                     <option value="xxx courier"  style="font-weight: bolder;" >DTDC </option> 
+                      <option value="yyy courier"style="font-weight: bolder;"> PROFESSISONAL COURIER</option> 
+                        <option value="xxb courier"style="font-weight: bolder;">BLUE DART</option> 
+                          <option value="aaa courier"style="font-weight: bolder;">DHL </option>
+                          <option value="aaa courier"style="font-weight: bolder;">ARAMEX</option>
+                          <option value="aaa courier"style="font-weight: bolder;">FEDEX</option>
+                          <option value="aaa courier"style="font-weight: bolder;">GLOBE EXPRESS</option>
                       </select>
                       </th>
 
@@ -92,13 +117,13 @@
 
                 <tr>
                     
-                    <td colspan="2">Date of booking:<input type="date" id="date" name="date" required></td>
+                    <td colspan="2">Date:<input type="date" id="date" name="date" required></td>
                     <td colspan="2">AirwayBill no:<input type="text" id="receivedAirwayBill" name="receiverAirwayBill"> </td>
                 </tr>
                 <tr>
-                    <td colspan="2">Reciver Details:</td>
+                    <td colspan="2">Sender:</td>
                     
-                    <td colspan="2">Sender Details</td>
+                    <td colspan="2">Reciver:</td>
                     
                 </tr>
                 <tr>
@@ -110,7 +135,6 @@
                 <tr>
                   <td colspan="2" >
                     <div>
-                      Name :
                     <input type="text" id="number" class="number-input">
                     </div><br>
                       
@@ -123,7 +147,6 @@
               </td>
 
               <td colspan="2"><div>
-                Name:
                 <input type="text" id="number" class="number-input"></div><br>
                 <textarea id="message" name="message" rows="4" required></textarea>
                   <br>
@@ -136,10 +159,9 @@
                   <td colspan="2">Email: <input type="email" id="ReciverEmail" name="receivierEmail"></td>
                 </tr>
                     
-                    <td>No.of.pcs<input type="text" id="noofpice" name="noofpice"></td>
-                    <td>Weight<input type="text" id="weight" name="weight"></td>
-                    <td>Shipment index <input type="text" name="ShipmentIndex"></td>
-                    <td>amount<input type="text" id="amount" name="amount"></td>
+                    <td colspan="1">No.of.pcs<input type="text" id="noofpice" name="noofpice"></td>
+                    <td colspan="1">Weight<input type="text" id="weight" name="weight"></td>
+                    <td colspan="2">amount<input type="text" id="amount" name="amount"></td>
 
                 </tr>
                 <tr>
@@ -177,6 +199,17 @@
                 selectedImage.src = selectedImageSrc;
               }
             });
+            // JavaScript to add the custom class to the selected option
+document.getElementById("myDropdown").addEventListener("change", function() {
+  var selectedOption = this.options[this.selectedIndex];
+  // Remove the class from all options
+  for (var i = 0; i < this.options.length; i++) {
+    this.options[i].classList.remove("custom-selected");
+  }
+  // Add the class to the selected option
+  selectedOption.classList.add("custom-selected");
+});
+
           </script>
       
 </body>
