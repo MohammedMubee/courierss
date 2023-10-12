@@ -9,8 +9,7 @@
         body {
            font-family: Arial, sans-serif;
            background-color: whitesmoke;
-           
-           
+                      
         }
         table {
             border-collapse: collapse;
@@ -50,8 +49,6 @@
   
 }
 .custom-select{
-
-
 margin: 0;
 margin-left: 0;
 margin-right: 0;
@@ -67,9 +64,6 @@ border: 2px solid #000;
   height: 50px;
 
 }
-
-  
-
    
     @media print {
   /* Hide the element with the ID "elementToHide" when printing */
@@ -92,7 +86,7 @@ border: 2px solid #000;
           <br>
           <br>
           <form id="form" method="post" autocomplete="off" name="google-sheet">
-          <table>
+          <table style="width: 60%;">
             <tr>
                  <th width="30%" colspan="2"><img src="images/img2.jpg" width="50%" height="80"/>
                 </th>
@@ -128,32 +122,31 @@ border: 2px solid #000;
                 </tr>
                 <tr>
                   <td colspan="2">Mobile No :<input type="number" id="mobileNO" name="senderMobileNo"></td>
-                  <td colspan="2">Mobile No:<input type="number" id="mobileNOR" name="ReciverMobile"></td>
+                  <td colspan="2">Mobile No:<input type="number" id="ReciverMobile" name="ReciverMobile"></td>
                 </tr>
                 
           
                 <tr>
                   <td colspan="2" >
-                    <div>
-                    <input type="text" id="number" class="number-input">
+                    <div>Name:
+                    <input type="text" id="SenderName" class="number-input1">
                     </div><br>
                       
                     <div>
-                    <textarea id="message" name="message" class="message-text"   rows="4" required></textarea></div>
+                    <textarea id="sendermessage" name="message" class="message-text"   rows="4" required></textarea></div>
                   <br>
                   <br>
                   
                  
               </td>
 
-              <td colspan="2"><div>
-                <input type="text" id="number" class="number-input"></div><br>
+              <td colspan="2"><div>Name:
+                <input type="text" id="ReciverName" class="number-input2"></div><br>
                 <textarea id="message" name="message" rows="4" required></textarea>
                   <br>
                   <br>
                   </tr>
               <tr>
-
                 <tr>
                   <td colspan="2">Email:<input type="email" id="senderEmail" name="senderEmail"></td>
                   <td colspan="2">Email: <input type="email" id="ReciverEmail" name="receivierEmail"></td>
@@ -171,15 +164,21 @@ border: 2px solid #000;
 
             <div id="elementToHide">
                <button type="submit" id="submit" name="submit" style="background-color: whitesmoke; width: 200px; " >Book The Shipment</button>
-          </div>
+          </div>     
+          <input type="checkbox" id="staticEntries"> <br><br>
+
+
 
             </form>
+            <div id="staticEntriesDisplay"></div>
+
                 <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>        
         <script src="script.js"></script> 
         <script src="https://apis.google.com/js/api.js"></script>
         <script>
              function displayBarcode() {
             const airwayBillNo = document.getElementById('receivedAirwayBill').value;
+            const uniqueValue = airwayBillNo + '_' + Date.now();
             JsBarcode("#receivedbarcodecontainer", airwayBillNo, {
                 format: "CODE128",
                 width: 2,
@@ -209,6 +208,7 @@ document.getElementById("myDropdown").addEventListener("change", function() {
   // Add the class to the selected option
   selectedOption.classList.add("custom-selected");
 });
+  
 
           </script>
       

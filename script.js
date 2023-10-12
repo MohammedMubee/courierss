@@ -102,13 +102,47 @@ form.addEventListener("submit", (e) => {
 // });
 
 
-
+// current date update
 const dateInput = document.getElementById('date');
-
-
 const currentDate = new Date();
-
 const year = currentDate.getFullYear();
 const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
 const day = String(currentDate.getDate()).padStart(2, '0');
 dateInput.value = `${year}-${month}-${day}`;
+
+// prevent from the button submiting
+
+const forms= document.getElementById('form');
+const staticEntriesCheckbox = document.getElementById('staticEntries');
+const staticEntriesDisplay = document.getElementById('staticEntriesDisplay');
+
+forms.addEventListener('submit', function (e) {
+  e.preventDefault(); 
+
+  const ReciverEmail = document.getElementById('ReciverEmail').value;
+  const airwayBillNo = document.getElementById('receivedAirwayBill').value;
+  const message = document.getElementById('message').value;
+  const mobileNOR = document.getElementById('ReciverMobile').value;
+  const recivierName = document.getElementById('ReciverName').value;
+
+  if (staticEntriesCheckbox.checked) {
+    // Display static entries and clear other form fields
+    staticEntriesDisplay.innerHTML = `
+      <p><strong>Name:</strong> ${ReciverEmail}</p>
+      <p><strong>Email:</strong> ${airwayBillNo}</p>
+      <p><strong>Message:</strong> ${message}</p>
+      <p><strong>Mobile No:</strong> ${mobileNOR}</p>
+      <p><strong>recivierName:</strong>${recivierName}</p>
+    `;
+
+    // Clear the form fields
+    document.getElementById('ReciverEmail').value = '';
+    document.getElementById('receivedAirwayBill').value = '';
+    document.getElementById('message').value = '';
+    document.getElementById('ReciverMobile').value = '';
+    document.getElementById('ReciverName').value = '';
+  } else {
+    // Clear the static entries display
+    staticEntriesDisplay.innerHTML = '';
+  }
+});
