@@ -91,10 +91,10 @@ border: 2px solid #000;
                  <th width="30%" colspan="2"><img src="images/img2.jpg" width="50%" height="80"/>
                 </th>
   
-                  <th width="60%" id="dropdown-content"; style="background-color:  white;font-size: 90px; width: ;">
+                  <th width="60%" id="dropdown-content"; style="background-color:  white;font-size: 90px;">
 
                    <select class="custom-select" id="myDropdown" name="courierType" style="width: 430px; height: 100px; text-align: center; " >
-                    <option value="ST courier" id="st-courier" style="font-weight: bolder; "> ST COURIER</option> 
+                    <option value="ST courier" id="st-courier" style="font-weight: bolder"> ST COURIER</option> 
                      <option value="xxx courier"  style="font-weight: bolder;" >DTDC </option> 
                       <option value="yyy courier"style="font-weight: bolder;"> PROFESSISONAL COURIER</option> 
                         <option value="xxb courier"style="font-weight: bolder;">BLUE DART</option> 
@@ -129,20 +129,22 @@ border: 2px solid #000;
                 <tr>
                   <td colspan="2" >
                     <div>Name:
-                    <input type="text" id="SenderName" class="number-input1">
+                    <input type="text" id="SenderName" name="sendername" class="number-input1">
                     </div><br>
                       
                     <div>
-                    <textarea id="sendermessage" name="message" class="message-text"   rows="4" required></textarea></div>
+                    <textarea id="sendermessage" name="sendermessage" class="message-text"   rows="4" required></textarea></div>
                   <br>
                   <br>
                   
                  
               </td>
 
-              <td colspan="2"><div>Name:
-                <input type="text" id="ReciverName" class="number-input2"></div><br>
-                <textarea id="message" name="message" rows="4" required></textarea>
+              <td colspan="2">
+                <div>Name:
+                <input type="text" id="ReciverName" name="receivername" class="number-input2">
+              </div><br>
+                <textarea id="message" name="receivermessage" rows="4" required></textarea>
                   <br>
                   <br>
                   </tr>
@@ -156,7 +158,6 @@ border: 2px solid #000;
                     <td colspan="1">Weight<input type="text" id="weight" name="weight"></td>
                     <td colspan="2">amount<input type="text" id="amount" name="amount"></td>
 
-                </tr>
                 <tr>
                     <td colspan="4"  style="text-align: center; background-color:white; "><h3>Any Shipment Anywhere We Are Here</h3></td>
                 </tr>
@@ -208,9 +209,7 @@ document.getElementById("myDropdown").addEventListener("change", function() {
   // Add the class to the selected option
   selectedOption.classList.add("custom-selected");
 });
-  
-
-          </script>
+  </script>
       
-</body>
+  </body>
 </html>
